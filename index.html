@@ -243,23 +243,25 @@ footer a{color:var(--acc)}
     <div class="ht-item">✅ Garantia 30 dias</div>
     <div class="ht-item">🏦 Via Hotmart</div>
   </div>
+  <div style="text-align:center;margin-top:12px">
+    <a href="https://wa.me/558131963052" style="display:inline-flex;align-items:center;gap:5px;font-size:11px;color:var(--txt2);text-decoration:none">
+      <span style="font-size:14px">💬</span> Dúvidas? Fale com o João — (81) 3196-3052
+    </a>
+  </div>
 </div>
 </section>
 
 <!-- DOR -->
 
-<!-- Faixa de prova social rápida -->
-<div style="background:var(--bg2);border-top:1px solid var(--brd);border-bottom:1px solid var(--brd);padding:14px 20px;overflow-x:auto">
-  <div style="display:flex;gap:20px;align-items:center;min-width:max-content;margin:0 auto;justify-content:center;flex-wrap:wrap">
-    <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--txt2)"><span style="color:var(--gold)">★★★★★</span> <span>+2.000 produtores</span></div>
-    <div style="color:var(--brd2)">|</div>
-    <div style="font-size:12px;color:var(--txt2)">💬 Suporte gratuito com Eng. Químico</div>
-    <div style="color:var(--brd2)">|</div>
-    <div style="font-size:12px;color:var(--txt2)">🛡️ Garantia de 30 dias</div>
-    <div style="color:var(--brd2)">|</div>
-    <div style="font-size:12px;color:var(--txt2)">⚡ Acesso imediato</div>
-    <div style="color:var(--brd2)">|</div>
-    <div style="font-size:12px;color:var(--txt2)">🏦 Via Hotmart</div>
+<!-- Faixa de prova social — grid 2x2 visível no mobile -->
+<div style="background:var(--bg2);border-top:1px solid var(--brd);border-bottom:1px solid var(--brd);padding:14px 20px">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:var(--max);margin:0 auto">
+    <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--txt2)"><span style="color:var(--gold)">★★★★★</span><span>+2.000 produtores</span></div>
+    <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--txt2)">💬 Suporte com Eng. Químico</div>
+    <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--txt2)">🛡️ Garantia de 30 dias</div>
+    <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--txt2)">⚡ Acesso imediato</div>
+    <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--txt2)">🏦 Via Hotmart</div>
+    <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--txt2)">🔒 Compra 100% segura</div>
   </div>
 </div>
 <section id="dor">
@@ -484,26 +486,29 @@ footer a{color:var(--acc)}
   <h2>O Que Nossos Alunos Estão Dizendo</h2>
   <p style="color:var(--txt2);margin-top:8px">Mais de 2.000 produtores em todo o Brasil. Conversas reais do WhatsApp.</p>
   <div class="prova-grid">
-    <!-- Depoimentos reais — prints do WhatsApp -->
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-      <div style="border-radius:12px;overflow:hidden;border:1px solid var(--brd2)">
-        <img src="dep1.jpg" alt="Depoimento 1 — Shampoo 200L" style="width:100%;display:block" loading="lazy">
+    <!-- Carrossel de depoimentos reais -->
+    <div style="position:relative">
+      <div id="dep-carousel" style="display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:10px;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:4px">
+        <div style="scroll-snap-align:start;flex:0 0 78%;border-radius:12px;overflow:hidden;border:1px solid var(--brd2)">
+          <img src="dep1.jpg" alt="Depoimento — Shampoo 200L" style="width:100%;display:block" loading="lazy">
+        </div>
+        <div style="scroll-snap-align:start;flex:0 0 78%;border-radius:12px;overflow:hidden;border:1px solid var(--brd2)">
+          <img src="dep2.jpg" alt="Depoimento — Limpador Multiuso" style="width:100%;display:block" loading="lazy">
+        </div>
+        <div style="scroll-snap-align:start;flex:0 0 78%;border-radius:12px;overflow:hidden;border:1px solid var(--brd2)">
+          <img src="dep3.jpg" alt="Depoimento — Shampoo Azul" style="width:100%;display:block" loading="lazy">
+        </div>
+        <div style="scroll-snap-align:start;flex:0 0 78%;border-radius:12px;overflow:hidden;border:1px solid var(--brd2)">
+          <img src="dep4.jpg" alt="Depoimento — Produto Finalizado" style="width:100%;display:block" loading="lazy">
+        </div>
+        <div style="scroll-snap-align:start;flex:0 0 78%;border-radius:12px;overflow:hidden;border:1px solid var(--brd2)">
+          <img src="dep5.jpg" alt="Depoimento — Baratex Brasil" style="width:100%;display:block" loading="lazy">
+        </div>
+        <div style="scroll-snap-align:start;flex:0 0 78%;border-radius:12px;overflow:hidden;border:1px solid var(--brd2)">
+          <img src="dep6.jpg" alt="Depoimento — Limpa Baú" style="width:100%;display:block" loading="lazy">
+        </div>
       </div>
-      <div style="border-radius:12px;overflow:hidden;border:1px solid var(--brd2)">
-        <img src="dep2.jpg" alt="Depoimento 2 — Limpador Multiuso" style="width:100%;display:block" loading="lazy">
-      </div>
-      <div style="border-radius:12px;overflow:hidden;border:1px solid var(--brd2)">
-        <img src="dep3.jpg" alt="Depoimento 3 — Shampoo Azul" style="width:100%;display:block" loading="lazy">
-      </div>
-      <div style="border-radius:12px;overflow:hidden;border:1px solid var(--brd2)">
-        <img src="dep4.jpg" alt="Depoimento 4 — Produto Finalizado" style="width:100%;display:block" loading="lazy">
-      </div>
-      <div style="border-radius:12px;overflow:hidden;border:1px solid var(--brd2)">
-        <img src="dep5.jpg" alt="Depoimento 5 — Baratex Brasil" style="width:100%;display:block" loading="lazy">
-      </div>
-      <div style="border-radius:12px;overflow:hidden;border:1px solid var(--brd2)">
-        <img src="dep6.jpg" alt="Depoimento 6 — Limpa Baú" style="width:100%;display:block" loading="lazy">
-      </div>
+      <p style="text-align:center;font-size:11px;color:var(--txt2);margin-top:10px">← deslize para ver mais →</p>
     </div>
     <div class="res-card">
       <p style="font-size:11px;color:var(--txt2)">💰 Você recupera o investimento</p>

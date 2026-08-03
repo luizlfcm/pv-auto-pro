@@ -26,7 +26,7 @@ fbq('track','ViewContent');
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--txt);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--txt);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;padding-bottom:78px}
 img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
 .wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
@@ -50,15 +50,16 @@ h3{font-size:16px;font-weight:700;line-height:1.3}
 /* HERO */
 #hero{background:linear-gradient(180deg,#0D1117 0%,var(--bg) 100%);padding:36px 0 40px;position:relative;overflow:hidden}
 #hero::before{content:'';position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:480px;height:480px;background:radial-gradient(circle,rgba(240,180,41,.06) 0%,transparent 70%);pointer-events:none}
-.hero-pill{display:inline-flex;align-items:center;gap:6px;background:rgba(240,180,41,.08);border:1px solid rgba(240,180,41,.25);border-radius:20px;padding:5px 14px;font-size:12px;font-weight:600;color:var(--gold);margin-bottom:18px}
-.hero-sub{font-size:15px;color:var(--txt2);margin:14px 0 24px;line-height:1.7}
+#hero .wrap{text-align:center}
+.hero-pill{display:inline-flex;align-items:center;gap:6px;background:rgba(240,180,41,.12);border:1px solid rgba(240,180,41,.35);border-radius:20px;padding:8px 18px;font-size:12.5px;font-weight:700;color:var(--gold);margin-bottom:20px;box-shadow:0 0 24px rgba(240,180,41,.1)}
+.hero-sub{font-size:15px;color:var(--txt2);margin:14px auto 24px;line-height:1.7;max-width:520px}
 .hero-trust{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;justify-content:center}
 .ht-item{display:flex;align-items:center;gap:4px;font-size:11px;font-weight:600;color:var(--txt2)}
 
 /* AUTORIDADE */
 #autoridade{background:var(--bg2)}
 .autor-card{background:var(--card);border:1px solid var(--brd);border-radius:16px;overflow:hidden;margin-top:20px}
-.autor-img{width:100%;max-height:300px;object-fit:cover;object-position:center 10%}
+.autor-img{width:100%;max-height:340px;object-fit:contain;object-position:center;background:var(--bg2)}
 .autor-body{padding:20px}
 .autor-name{font-size:21px;font-weight:800;margin-bottom:3px}
 .autor-title{font-size:12px;color:var(--gold);font-weight:600;margin-bottom:16px;line-height:1.4}
@@ -212,7 +213,7 @@ footer a{color:var(--acc)}
   <div class="hero-pill">🧪 Método criado por Engenheiro Químico com 10 anos de indústria automotiva</div>
   <h1>Você já misturou tudo certinho e o produto saiu ralo, sem cheiro, sem o rendimento esperado — ou tem medo que isso aconteça e nem arrisca começar?</h1>
   <p class="hero-sub">Eu sou Engenheiro Químico, trabalho há 10 anos na área. Cada fórmula deste material passa pelo <strong style="color:var(--txt)">Protocolo Fórmula Auto Pro</strong> — o mesmo padrão técnico que aplico em P&amp;D — antes de chegar até você.</p>
-  <p style="font-size:12px;color:var(--txt2);margin:-10px 0 20px">Se você já perdeu material com fórmula que não funcionou, ou não quer correr esse risco no início, este material foi pensado pra você.</p>
+  <p style="font-size:12px;color:var(--txt2);margin:-10px auto 20px;max-width:480px;text-align:center">Se você já perdeu material com fórmula que não funcionou, ou não quer correr esse risco no início, este material foi pensado pra você.</p>
   <a href="#oferta" class="btn btn-pri cta">⚡ Conhecer o Método Fórmula Auto Pro →</a>
   <div class="hero-trust">
     <div class="ht-item">🔒 Compra 100% segura</div>
@@ -631,17 +632,48 @@ document.querySelectorAll('.cta').forEach(function(el){
   });
 });
 
-// Hide sticky when offer is visible
+// Hide sticky when offer or footer is visible + only show after scrolling ~35% of the page
 var oferta=document.getElementById('oferta');
+var footerEl=document.querySelector('footer');
 var sticky=document.getElementById('sticky');
+var ofertaVisible=false;
+var footerVisible=false;
+var scrolledEnough=false;
+
+function updateSticky(){
+  var show=scrolledEnough && !ofertaVisible && !footerVisible;
+  sticky.style.opacity=show?'1':'0';
+  sticky.style.pointerEvents=show?'all':'none';
+}
+
 if(oferta&&sticky){
+  sticky.style.opacity='0';
+  sticky.style.pointerEvents='none';
+
   var obs=new IntersectionObserver(function(entries){
     entries.forEach(function(e){
-      sticky.style.opacity=e.isIntersecting?'0':'1';
-      sticky.style.pointerEvents=e.isIntersecting?'none':'all';
+      ofertaVisible=e.isIntersecting;
+      updateSticky();
     });
   },{threshold:0.1});
   obs.observe(oferta);
+
+  if(footerEl){
+    var footerObs=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        footerVisible=e.isIntersecting;
+        updateSticky();
+      });
+    },{threshold:0.05});
+    footerObs.observe(footerEl);
+  }
+
+  window.addEventListener('scroll',function(){
+    var docHeight=document.documentElement.scrollHeight-window.innerHeight;
+    var pct=docHeight>0?(window.scrollY/docHeight):0;
+    scrolledEnough=pct>=0.35;
+    updateSticky();
+  },{passive:true});
 }
 </script>
 

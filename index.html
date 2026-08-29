@@ -738,15 +738,18 @@ window.addEventListener('scroll',function(){
   var total=document.body.scrollHeight - window.innerHeight;
   var pct=scrolled/total;
 
-  // Verifica se oferta está visível
+  // Verifica se oferta ou CTA final estão visíveis
   var ofertaVisible=false;
   if(oferta){
     var rect=oferta.getBoundingClientRect();
     ofertaVisible=rect.top<window.innerHeight&&rect.bottom>0;
   }
 
+  // Sumir também no final da página (últimos 10%)
+  var noFinal=pct>=0.90;
+
   if(sticky){
-    if(pct>=0.30&&!ofertaVisible){
+    if(pct>=0.30&&!ofertaVisible&&!noFinal){
       sticky.style.opacity='1';
       sticky.style.pointerEvents='all';
     }else{

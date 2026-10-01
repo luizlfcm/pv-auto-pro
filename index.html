@@ -711,7 +711,7 @@ footer a{color:var(--acc)}
     <p class="sticky-price">Acesso completo por</p>
     <p class="sticky-val">R$37</p>
   </div>
-  <button class="sticky-btn cta" onclick="try{fbq('track','InitiateCheckout')}catch(e){}; window.location='https://pay.hotmart.com/T106306252O?checkoutMode=10'">
+  <button class="sticky-btn cta" onclick="try{fbq('track','InitiateCheckout')}catch(e){}; window.location=window.autoProCheckoutUrl('https://pay.hotmart.com/T106306252O?checkoutMode=10')">
     🔓 Garantir Acesso →
   </button>
 </div>
@@ -770,6 +770,81 @@ window.addEventListener('scroll',function(){
     }
   }
 },{passive:true});
+</script>
+
+<script id="checkout_attribution_script">
+/* Preserva a atribuição recebida na URL durante esta sessão da página. */
+(function () {
+  'use strict';
+  var storageKey = 'auto_pro_T106306252O_attribution_v1';
+  var allowedKeys = [
+    'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content',
+    'utm_id', 'src', 'sck', 'fbclid'
+  ];
+  var received = new URLSearchParams(window.location.search);
+  var attribution = {};
+  var hasIncomingAttribution = allowedKeys.some(function (key) {
+    return received.has(key);
+  });
+
+  function validValue(value) {
+    return typeof value === 'string' && value.trim() !== '' &&
+      !/[{}]/.test(value);
+  }
+
+  if (hasIncomingAttribution) {
+    allowedKeys.forEach(function (key) {
+      var value = received.get(key);
+      if (validValue(value)) attribution[key] = value;
+    });
+    try {
+      sessionStorage.setItem(storageKey, JSON.stringify(attribution));
+    } catch (error) { /* O checkout continua funcionando sem armazenamento. */ }
+  } else {
+    try {
+      var saved = JSON.parse(sessionStorage.getItem(storageKey) || '{}');
+      if (saved && typeof saved === 'object') {
+        allowedKeys.forEach(function (key) {
+          if (validValue(saved[key])) attribution[key] = saved[key];
+        });
+      }
+    } catch (error) { /* Sem dados válidos anteriores, usa o link original. */ }
+  }
+
+  function checkoutUrl(href) {
+    try {
+      var checkout = new URL(href, window.location.href);
+      if (checkout.protocol !== 'https:' || checkout.hostname !== 'pay.hotmart.com') return href;
+      allowedKeys.forEach(function (key) {
+        if (validValue(attribution[key])) {
+          checkout.searchParams.set(key, attribution[key]);
+        } else if (checkout.searchParams.has(key) &&
+          !validValue(checkout.searchParams.get(key))) {
+          checkout.searchParams.delete(key);
+        }
+      });
+      return checkout.href;
+    } catch (error) { return href; }
+  }
+
+  // O botão fixo usa o mesmo repasse dos links de compra.
+  window.autoProCheckoutUrl = checkoutUrl;
+  function decorateCheckout(link) {
+    if (!link || !link.getAttribute) return;
+    var originalHref = link.getAttribute('href');
+    var decoratedHref = checkoutUrl(originalHref);
+    if (decoratedHref !== originalHref) link.setAttribute('href', decoratedHref);
+  }
+
+  document.querySelectorAll('a[href]').forEach(decorateCheckout);
+  // Atualiza também links dinâmicos e preserva os handlers de clique existentes.
+  document.addEventListener('click', function (event) {
+    var target = event.target;
+    if (target && typeof target.closest === 'function') {
+      decorateCheckout(target.closest('a[href]'));
+    }
+  }, true);
+})();
 </script>
 
 </body>

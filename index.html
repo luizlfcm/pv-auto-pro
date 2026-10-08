@@ -773,7 +773,7 @@ window.addEventListener('scroll',function(){
   var ofertaVisible=false;
   if(oferta){
     var rect=oferta.getBoundingClientRect();
-    ofertaVisible=rect.top<window.innerHeight&&rect.bottom>0;
+    ofertaVisible=rect.top<window.innerHeight; // da oferta em diante (FAQ, WhatsApp, rodapé) o botão fica escondido
   }
 
   // Sumir também no final da página (últimos 10%)

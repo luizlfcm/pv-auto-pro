@@ -730,7 +730,7 @@ footer a{color:var(--acc)}
     <p class="sticky-price">Acesso completo por</p>
     <p class="sticky-val">R$41,90</p>
   </div>
-  <button class="sticky-btn cta" onclick="try{pxEv('InitiateCheckout')}catch(e){}; window.location=window.autoProCheckoutUrl('https://pay.hotmart.com/T106306252O?off=590ipem5&checkoutMode=10')">
+  <button class="sticky-btn cta" onclick="try{fbq('trackCustom','ClickComprar')}catch(e){}; window.location=window.autoProCheckoutUrl('https://pay.hotmart.com/T106306252O?off=590ipem5&checkoutMode=10')">
     🔓 Garantir Acesso →
   </button>
 </div>
@@ -749,7 +749,7 @@ document.querySelectorAll('.faq-q').forEach(function(q){
 // Pixel apenas nos CTAs que levam ao checkout Hotmart
 document.querySelectorAll('a.cta[href^="https://pay.hotmart"]').forEach(function(el){
   el.addEventListener('click',function(){
-    try{pxEv('InitiateCheckout')}catch(e){}
+    try{fbq('trackCustom','ClickComprar')}catch(e){}
   });
 });
 

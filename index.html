@@ -757,7 +757,7 @@ document.querySelectorAll('a.cta[href^="https://pay.hotmart"]').forEach(function
 var oferta=document.getElementById('oferta');
 var sticky=document.getElementById('sticky');
 
-// Sticky só aparece após rolar 40% da página
+// Sticky só aparece após rolar 50% da página
 // Some quando lead chega na seção de oferta
 if(sticky){
   sticky.style.opacity='0';
@@ -780,7 +780,7 @@ window.addEventListener('scroll',function(){
   var noFinal=pct>=0.90;
 
   if(sticky){
-    if(pct>=0.30&&!ofertaVisible&&!noFinal){
+    if(pct>=0.50&&!ofertaVisible&&!noFinal){
       sticky.style.opacity='1';
       sticky.style.pointerEvents='all';
     }else{

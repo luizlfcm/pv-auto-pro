@@ -11,8 +11,10 @@
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
 fbq('init','991715813570421');
-fbq('track','PageView');
-fbq('track','ViewContent');
+window.srvEv=function(ev,id,data){try{setTimeout(function(){try{var m=document.cookie.match(/(?:^|; )_fbp=([^;]*)/),c=document.cookie.match(/(?:^|; )_fbc=([^;]*)/);fetch('https://pagamento.luverisgroup.com.br/api/evento',{method:'POST',mode:'no-cors',keepalive:true,headers:{'Content-Type':'text/plain'},body:JSON.stringify({produto:'ap',evento:ev,id:id,url:location.href,fbp:m?decodeURIComponent(m[1]):'',fbc:c?decodeURIComponent(c[1]):'',valor:data&&data.value})})}catch(e){}},ev==='InitiateCheckout'?0:1200)}catch(e){}};
+window.pxEv=function(ev,data){var id=ev.slice(0,2).toLowerCase()+'_'+Date.now().toString(36)+Math.random().toString(36).slice(2,8);try{fbq('track',ev,data||{},{eventID:id})}catch(e){}srvEv(ev,id,data)};
+pxEv('PageView');
+pxEv('ViewContent');
 </script>
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=991715813570421&ev=PageView&noscript=1"/></noscript>
 
@@ -728,7 +730,7 @@ footer a{color:var(--acc)}
     <p class="sticky-price">Acesso completo por</p>
     <p class="sticky-val">R$41,90</p>
   </div>
-  <button class="sticky-btn cta" onclick="try{fbq('track','InitiateCheckout')}catch(e){}; window.location=window.autoProCheckoutUrl('https://pay.hotmart.com/T106306252O?off=590ipem5&checkoutMode=10')">
+  <button class="sticky-btn cta" onclick="try{pxEv('InitiateCheckout')}catch(e){}; window.location=window.autoProCheckoutUrl('https://pay.hotmart.com/T106306252O?off=590ipem5&checkoutMode=10')">
     🔓 Garantir Acesso →
   </button>
 </div>
@@ -747,7 +749,7 @@ document.querySelectorAll('.faq-q').forEach(function(q){
 // Pixel apenas nos CTAs que levam ao checkout Hotmart
 document.querySelectorAll('a.cta[href^="https://pay.hotmart"]').forEach(function(el){
   el.addEventListener('click',function(){
-    try{fbq('track','InitiateCheckout')}catch(e){}
+    try{pxEv('InitiateCheckout')}catch(e){}
   });
 });
 

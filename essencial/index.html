@@ -26,7 +26,7 @@ h1{font-size:clamp(27px,7.4vw,40px);font-weight:900;line-height:1.1;letter-spaci
 .btn{display:block;width:100%;padding:19px 22px;border-radius:14px;font-size:17px;font-weight:900;text-align:center;background:linear-gradient(135deg,var(--acc),var(--accd));color:var(--on);box-shadow:0 6px 24px rgba(232,114,12,.28);border:none;cursor:pointer}
 .btn:active{transform:translateY(1px)}.under{font-size:12.5px;color:var(--txt2);text-align:center;margin-top:10px}
 #hero{padding:34px 0 40px;background:linear-gradient(180deg,var(--bg2),var(--bg))}
-.pricepill{display:inline-flex;align-items:baseline;gap:8px;background:var(--card);border:1px solid var(--brd);border-radius:999px;padding:8px 16px;margin-bottom:18px;font-size:13px;color:var(--txt2)}.pricepill b{font-size:22px;color:var(--acc);font-weight:900}
+.pricepill{display:inline-flex;flex-direction:column;align-items:center;gap:2px;background:var(--card);border:1px solid var(--brd);border-radius:22px;padding:10px 24px 12px;margin-bottom:18px;text-align:center;color:var(--txt2)}.pricepill .pp-l{font-size:12px;line-height:1.3}.pricepill .pp-p{white-space:nowrap;font-size:13px;line-height:1.2}.pricepill b{font-size:30px;color:var(--acc);font-weight:900;margin-right:6px;letter-spacing:-.5px}
 .trust{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:20px}.trust div{background:var(--card);border:1px solid var(--brd);border-radius:12px;padding:10px 6px;text-align:center;font-size:11px;color:var(--txt2);line-height:1.35}.trust span{display:block;font-size:20px;margin-bottom:2px}
 .list{display:flex;flex-direction:column;gap:10px;margin:18px 0}.it{display:flex;gap:12px;align-items:flex-start;background:var(--card);border:1px solid var(--brd);border-radius:12px;padding:14px;font-size:14.5px;color:var(--txt2);line-height:1.55}.it b{color:var(--txt)}.it .i{flex-shrink:0;font-size:19px;line-height:1.3}
 .cols{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}.col{border-radius:12px;padding:14px;font-size:12.5px;line-height:1.5;color:var(--txt2)}.col h4{font-size:11px;font-weight:900;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px}.col p{margin-bottom:6px}.col.y{background:rgba(63,185,80,.06);border:1px solid rgba(63,185,80,.22)}.col.y h4{color:var(--grn)}.col.n{background:rgba(248,81,73,.05);border:1px solid rgba(248,81,73,.18)}.col.n h4{color:var(--red)}
@@ -49,7 +49,7 @@ window.addEventListener('load',function(){(function(c,l,a,r,i,t,y){c[a]=c[a]||fu
 </script>
 </head><body>
 <section id="hero"><div class="wrap">
-  <div class="pricepill">Para quem está começando · <b>R$ 14,90</b> · pagamento único</div>
+  <div class="pricepill"><span class="pp-l">Para quem está começando</span><span class="pp-p"><b>R$ 14,90</b>pagamento único</span></div>
   <p class="eyebrow">Fórmula Auto Pro Essencial · Para quem está começando</p>
   <h1>Aprenda a produzir seus primeiros produtos automotivos com <span class="hl">fórmulas explicadas passo a passo.</span></h1>
   <p class="sub">Comece com uma seleção de <b>20 fórmulas profissionais</b> de limpeza, brilho, interior e aromatização. Consulte ingredientes, quantidades e modo de preparo no aplicativo ou no PDF, com suporte direto de <b>João Silva, Engenheiro Químico</b>.</p>

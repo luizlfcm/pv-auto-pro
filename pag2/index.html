@@ -254,7 +254,7 @@ window.addEventListener('load',function(){(function(c,l,a,r,i,t,y){c[a]=c[a]||fu
     <span class="ci">🛡️</span>
     <span class="ct">Criado por Engenheiro Químico credenciado no CREA<small>CREA 214587/D — João Silva</small></span>
   </div>
-  <a href="#oferta" class="btn btn-pri cta mt6">⚡ Quero as 80 Fórmulas Profissionais →</a>
+  <a href="https://pagamento.luverisgroup.com.br/ap" class="btn btn-pri cta mt6">⚡ Quero as 80 fórmulas por R$41,90 →</a>
 
 </div>
 </section>
@@ -288,7 +288,7 @@ window.addEventListener('load',function(){(function(c,l,a,r,i,t,y){c[a]=c[a]||fu
     <p style="font-size:14px;color:var(--txt);font-weight:600;margin-bottom:4px">Se você se identificou com qualquer uma dessas situações...</p>
     <p style="font-size:12px;color:var(--txt2)">O Fórmula Auto Pro foi criado exatamente para você.</p>
   </div>
-  <a href="#oferta" class="btn btn-sec mt4 cta">Ver condições especiais →</a>
+  <a href="https://pagamento.luverisgroup.com.br/ap" class="btn btn-sec mt4 cta">Garantir meu acesso por R$41,90 →</a>
 </div>
 </section>
 
@@ -331,7 +331,7 @@ window.addEventListener('load',function(){(function(c,l,a,r,i,t,y){c[a]=c[a]||fu
       <div class="stat"><div class="stat-n">2k+</div><div class="stat-l">Produtores já usando</div></div>
     </div>
   </div>
-  <a href="#oferta" class="btn btn-pri cta">Quero as fórmulas →</a>
+  <a href="https://pagamento.luverisgroup.com.br/ap" class="btn btn-pri cta">Quero as fórmulas →</a>
 </div>
 </section>
 
@@ -372,7 +372,7 @@ window.addEventListener('load',function(){(function(c,l,a,r,i,t,y){c[a]=c[a]||fu
     <p style="font-size:12px;color:var(--txt2);margin-top:4px">É exatamente isso que o Fórmula Auto Pro entrega.</p>
   </div>
 
-  <a href="#oferta" class="btn btn-sec mt6 cta">Quero as fórmulas certas →</a>
+  <a href="https://pagamento.luverisgroup.com.br/ap" class="btn btn-sec mt6 cta">Quero as fórmulas certas →</a>
 </div>
 </section>
 <section id="autoridade">
@@ -464,7 +464,7 @@ window.addEventListener('load',function(){(function(c,l,a,r,i,t,y){c[a]=c[a]||fu
     <a href="https://formulaauto.luverisgroup.com.br/?preview=1" target="_blank" rel="noopener" onclick="try{fbq('trackCustom','ExploreAppClick',{placement:'post_screenshots'})}catch(e){}" style="flex-shrink:0;display:inline-block;padding:10px 20px;border:1.5px solid var(--acc);border-radius:10px;color:var(--accl);font-weight:700;font-size:13px;text-decoration:none;white-space:nowrap">Conhecer a plataforma →</a>
   </div>
 
-  <a href="#oferta" class="btn btn-pri mt6 cta">Quero tudo isso por R$41,90 →</a>
+  <a href="https://pagamento.luverisgroup.com.br/ap" class="btn btn-pri mt6 cta">Quero tudo isso por R$41,90 →</a>
 </div>
 </section>
 
@@ -603,7 +603,7 @@ window.addEventListener('load',function(){(function(c,l,a,r,i,t,y){c[a]=c[a]||fu
       <p class="res-tag">Diferença bruta — não considera embalagem, perdas, tributos e demais custos</p>
     </div>
   </div>
-  <a href="#oferta" class="btn btn-pri mt6 cta">Quero as fórmulas →</a>
+  <a href="https://pagamento.luverisgroup.com.br/ap" class="btn btn-pri mt6 cta">Quero as fórmulas →</a>
 </div>
 </section>
 
@@ -754,7 +754,7 @@ document.querySelectorAll('a.cta[href^="https://pagamento.luverisgroup.com.br"]'
 var oferta=document.getElementById('oferta');
 var sticky=document.getElementById('sticky');
 
-// Sticky só aparece após rolar 50% da página
+// Sticky aparece após a primeira dobra (10% da página)
 // Some quando lead chega na seção de oferta
 if(sticky){
   sticky.style.opacity='0';
@@ -777,7 +777,7 @@ window.addEventListener('scroll',function(){
   var noFinal=pct>=0.90;
 
   if(sticky){
-    if(pct>=0.50&&!ofertaVisible&&!noFinal){
+    if(pct>=0.10&&!ofertaVisible&&!noFinal){
       sticky.style.opacity='1';
       sticky.style.pointerEvents='all';
     }else{

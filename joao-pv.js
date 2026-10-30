@@ -26,5 +26,8 @@
       }
     });
   }
-  if(document.readyState==='complete')iniciar();else window.addEventListener('load',iniciar);
+  var ok=false;
+  function pct(){var d=document.documentElement,h=Math.max(d.scrollHeight,document.body.scrollHeight)-window.innerHeight;return h>0?(window.pageYOffset||d.scrollTop)/h:0}
+  function ver(){if(ok||pct()<0.5)return;ok=true;window.removeEventListener('scroll',ver);iniciar()}
+  window.addEventListener('scroll',ver,{passive:true});ver();
 })();

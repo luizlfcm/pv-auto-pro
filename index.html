@@ -266,4 +266,7 @@ window.addEventListener('scroll',function(){
  var sticky=document.getElementById('sticky');
  if(sticky){var sync=function(){sticky.inert=sticky.style.opacity!=='1';sticky.setAttribute('aria-hidden',String(sticky.inert));};new MutationObserver(sync).observe(sticky,{attributes:true,attributeFilter:['style']});sync();}
 })();
-</script></body></html>
+</script><script>/* Joãozinho (assistente virtual) — carrega depois da página, sem pesar o anúncio. ?semchat=1 desliga. */
+window.addEventListener("load",function(){setTimeout(function(){try{var s=document.createElement("script");s.src="/joao-pv.js?v=1";s.async=true;document.body.appendChild(s)}catch(e){}},2500)});
+</script>
+</body></html>
